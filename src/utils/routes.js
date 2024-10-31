@@ -4,5 +4,5 @@ export const routes = {
     path: `/search`,
     navigation_path: (query) => `/search?query=${query}`,
   },
-  movie_details: { path: (imdbID) => `/${imdbID}` },
+  movie_details: { path: (imdbID) => `/movies/${imdbID}` },
 };
