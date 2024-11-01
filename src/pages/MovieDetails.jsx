@@ -18,8 +18,6 @@ export default function MovieDetails() {
   useEffect(() => {
     if (!isMovieLoading) {
       if (movie_fetched.Response === "True") {
-        console.log(movie_fetched);
-
         setMovie(movie_fetched);
       }
     }
