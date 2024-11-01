@@ -49,7 +49,7 @@ export default function SearchBar() {
           }}
         />
         <button
-          className="bg-black p-2 rounded-md"
+          className="bg-black p-2 rounded-md items-center flex gap-2"
           onClick={() => {
             if (query) {
               navigate(routes.search.navigation_path(query), {
@@ -59,7 +59,7 @@ export default function SearchBar() {
             }
           }}
         >
-          <TbDeviceDesktopSearch size={28} />
+          <TbDeviceDesktopSearch size={28} /> <span>Rechercher</span>
         </button>
       </div>
       <div className="flex items-center">
