@@ -1,3 +1,4 @@
+// definition of types data
 const types = [
   { id: 0, name: "Tous", value: "" },
   { id: 1, name: "Films", value: "movie" },

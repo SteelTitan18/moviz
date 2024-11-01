@@ -20,7 +20,9 @@ function App() {
   };
 
   return (
+    // Publishing context values to tree componanats
     <FiltersContext.Provider value={{ type, year, filterByType, filterByYear }}>
+      {/* Definition of application routing */}
       <BrowserRouter>
         <Routes>
           <Route path={routes.home.path} element={<Layout />}>

@@ -10,24 +10,30 @@ import types from "../utils/types";
 
 export default function SearchBar() {
   const { type, year, filterByType, filterByYear } = useContext(FiltersContext);
+  // variables for mui Select Liist for types
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState();
   const open = Boolean(anchorEl);
   const [query, setQuery] = useState();
+
+  // ref for the year filter input
   const year_ref = useRef();
 
   const navigate = useNavigate();
 
+  // type list click logic
   const handleClickListItem = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
+  // type list item click logic ; when clicked, the selected value is set as a filter
   const handleMenuItemClick = (event, index, option) => {
     setSelectedIndex(index);
     setAnchorEl(null);
     filterByType(option.value);
   };
 
+  // list close logic
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -68,6 +74,7 @@ export default function SearchBar() {
               onClick={handleClickListItem}
             >
               <BiSolidCategory />
+              {/* Display right name depending on the value */}
               {type
                 ? types.find((type_option) => type_option.value === type)?.name
                 : "Types"}
@@ -104,6 +111,7 @@ export default function SearchBar() {
             type="text"
             placeholder="Année"
           />
+          {/* Button which is pressed to apply the year as a filter */}
           <button
             value={year}
             className="p-1 bg-blue-800 rounded-md ml-5"
@@ -115,6 +123,7 @@ export default function SearchBar() {
           >
             Appliquer
           </button>
+          {/* Button which is pressed to cancel the filter of year */}
           <button
             className="p-1 bg-red-700 rounded-md ml-5"
             onClick={() => {

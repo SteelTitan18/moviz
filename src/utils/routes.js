@@ -1,3 +1,4 @@
+// definition of application routes
 export const routes = {
   home: { path: "/" },
   search: {

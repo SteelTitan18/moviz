@@ -1,6 +1,7 @@
 import movie_illustration from "../assets/movie_illustration.png";
 
 export default function Home() {
+  // home page
   return (
     <div className="flex flex-col items-center justify-center font-bold text-xl h-full">
       <img

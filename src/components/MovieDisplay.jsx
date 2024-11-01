@@ -11,7 +11,7 @@ export default function MovieDisplay({ movie }) {
       >
         <div className="h-52 w-full flex items-center justify-center overflow-hidden rounded-md bg-slate-800">
           <img
-            src={movie?.Poster !== "N/A" ? movie?.Poster : poster_illustration}
+            src={movie?.Poster !== "N/A" ? movie?.Poster : poster_illustration} // A standard illustration if there is no poster
             alt="movie_poster"
             className="h-full object-cover"
           />

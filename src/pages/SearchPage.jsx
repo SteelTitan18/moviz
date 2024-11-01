@@ -17,6 +17,7 @@ export default function Search() {
   };
   const { type, year } = useContext(FiltersContext);
 
+  // call of search request with existing filters and page
   const { data: movies_fetched, isLoading: isMoviesLoading } = useSearchQuery({
     query: query,
     page: page,
@@ -24,8 +25,7 @@ export default function Search() {
     year: year,
   });
 
-  console.log(movies.length);
-
+  // this hooks allows the request to be called on filters or page change
   useEffect(() => {
     if (!isMoviesLoading) {
       if (movies_fetched?.Response === "True") {
@@ -35,34 +35,7 @@ export default function Search() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setMovies, isMoviesLoading, page, year, type, movies_fetched]);
 
-  /*  useEffect(
-    function () {
-      let filter_movies = movies_fetched?.Search;
-      if (type) {
-        filter_movies = filter_movies.filter((movie) => movie.Type === type);
-        setMovies(filter_movies);
-      }
-      if (year) {
-        const start_year = year[0];
-        if (start_year !== 2020) {
-          const end_year = year[1];
-          console.log(end_year);
-
-          filter_movies = filter_movies.filter(
-            (movie) => Number(movie.Year) < end_year
-          );
-        }
-        filter_movies = filter_movies.filter(
-          (movie) => Number(movie.Year) >= start_year
-        );
-        console.log(filter_movies);
-
-        setMovies(filter_movies);
-      }
-    },
-    [type, year, movies_fetched]
-  ); */
-
+  // If movies are loading, display the Loader
   if (isMoviesLoading) {
     return <Loader />;
   }
@@ -72,11 +45,13 @@ export default function Search() {
       <span className="text-lg">
         Résultats pour "{query}" : ({movies_fetched?.totalResults} résultat(s))
       </span>
+      {/* grid view of results */}
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 p-4">
         {movies.map((movie) => (
           <MovieDisplay movie={movie} />
         ))}
       </div>
+      {/* Pagination componant */}
       <Stack spacing={2} className="self-center bg-slate-400">
         <Pagination
           count={Math.ceil(movies_fetched?.totalResults / 10)}
@@ -86,6 +61,7 @@ export default function Search() {
       </Stack>
     </div>
   ) : (
+    //   Compoant to display if there is no corresponding data
     <div className="flex flex-col items-center justify-center font-bold text-xl h-full">
       <img src={no_movies} alt="no_movies" className="p-2 h-96" />
       Aucune donnée trouvée pour "{query}"

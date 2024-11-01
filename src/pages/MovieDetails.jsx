@@ -29,6 +29,7 @@ export default function MovieDetails() {
     return <Loader />;
   }
 
+  // movie details page
   return (
     <div className="flex flex-col gap-10">
       <Back />
