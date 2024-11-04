@@ -5,7 +5,7 @@ export const OMDbApiSlice = createApi({
   reducerPath: "omdb",
   baseQuery: fetchBaseQuery({
     // getting base url from .env
-    baseUrl: 'http://www.omdbapi.com/',
+    baseUrl: process.env.REACT_APP_OMDB_BASE_URL,
   }),
   tagTypes: ["Movies"],
   refetchOnMountOrArgChange: true,
