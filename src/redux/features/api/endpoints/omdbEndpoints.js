@@ -9,7 +9,7 @@ const extendedOmdbApi = OMDbApiSlice.injectEndpoints({
         method: "GET",
         // Definition of requests parameters
         params: {
-          apikey: 'fcd76f30',
+          apikey: process.env.REACT_APP_OMDB_API_KEY,
           s: query,
           page: page ? page : 1,
           type: type ? type : null,
@@ -23,7 +23,7 @@ const extendedOmdbApi = OMDbApiSlice.injectEndpoints({
         method: "GET",
         // Definition of requests parameters
         params: {
-          apikey: 'fcd76f30',
+          apikey: process.env.REACT_APP_OMDB_API_KEY,
           i: imdbID,
           plot: "full",
         },
